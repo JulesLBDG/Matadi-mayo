@@ -318,7 +318,7 @@ class Component extends DCLogic {
     if (!f.name.trim() || !f.phone.trim()) { this.setState({ error: true }); return; }
     if (this.needsAddress(this.state.type) && !f.address.trim()) { this.setState({ error: true }); return; }
     try {
-      fetch("https://formsubmit.co/ajax/julesmsk@me.com", {
+      fetch("https://formsubmit.co/ajax/ferme@mskconnect.cd", {
         method: "POST",
         headers: { "Content-Type": "application/json", "Accept": "application/json" },
         body: JSON.stringify({
