@@ -38,12 +38,15 @@
   @media (max-width: 760px) {
     body { padding-bottom:calc(76px + env(safe-area-inset-bottom)); }
     #top > div:first-child { padding:8px 16px !important; font-size:11.5px !important; }
-    .msk-nav { padding:10px 16px !important; }
+    .msk-nav { padding:10px 16px 0 !important; flex-wrap:wrap; }
     .msk-nav > a { gap:10px !important; min-width:0; }
     .msk-nav > a > div:first-child { width:40px !important; height:40px !important; border-radius:11px !important; flex:0 0 auto; }
     .msk-nav > a > div:last-child > div:first-child { font-size:17px !important; white-space:nowrap; }
     .msk-nav > a > div:last-child > div:last-child { font-size:9px !important; letter-spacing:.14em !important; }
-    .msk-nav > div { display:none !important; }
+    .msk-nav > div { display:flex !important; order:2; width:calc(100% + 32px); margin:10px -16px 0; padding:10px 16px 12px; gap:24px !important; overflow-x:auto; overscroll-behavior-x:contain; scroll-snap-type:x proximity; scrollbar-width:none; border-top:1px solid rgba(31,61,43,.08); }
+    .msk-nav > div::-webkit-scrollbar { display:none; }
+    .msk-nav > div a { flex:0 0 auto; min-height:42px; display:flex; align-items:center; white-space:nowrap; scroll-snap-align:start; font-size:14px; }
+    .msk-nav > div .msk-cta { padding:10px 20px !important; }
     .msk-hero, .msk-section { padding-left:16px !important; padding-right:16px !important; }
     .msk-section { padding-top:48px !important; }
     .msk-hero > div, .msk-split, .msk-order { grid-template-columns:1fr !important; border-radius:20px !important; }
