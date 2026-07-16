@@ -1,0 +1,19 @@
+{
+  "name": "MSK Matadi-Mayo",
+  "short_name": "MSK Ferme",
+  "description": "Produits frais de la ferme, livrés à Kinshasa.",
+  "lang": "fr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7f4ea",
+  "theme_color": "#1f3d2b",
+  "icons": [
+    {
+      "src": "./uploads/hero-champ-poules-v2.webp",
+      "sizes": "any",
+      "type": "image/webp",
+      "purpose": "any"
+    }
+  ]
+}

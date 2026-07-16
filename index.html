@@ -1,8 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#1f3d2b">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="MSK Ferme">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="apple-touch-icon" href="./uploads/hero-champ-poules-v2.webp">
 <title>MSK Matadi-Mayo — Ferme intégrée à Kinshasa : légumes, poulets, œufs, porc</title>
 <meta name="description" content="MSK Matadi-Mayo, ferme intégrée à Mont-Ngafula (Kinshasa). Légumes frais, poulets, œufs et viande de porc directement du producteur. Commandez au +243 996 901 895.">
 <script src="./support.js"></script>
@@ -26,6 +32,53 @@
   .msk-prod { transition: transform .25s ease, box-shadow .25s ease; }
   .msk-cta { transition: transform .18s ease, filter .18s ease; }
   .msk-cta:hover { transform: translateY(-2px); filter: brightness(1.06); color: #f7f4ea; }
+  .msk-mobile-bar { display:none; }
+  :focus-visible { outline:3px solid #e8c66a; outline-offset:3px; }
+  html { scroll-behavior:smooth; }
+  @media (max-width: 760px) {
+    body { padding-bottom:calc(76px + env(safe-area-inset-bottom)); }
+    #top > div:first-child { padding:8px 16px !important; font-size:11.5px !important; }
+    .msk-nav { padding:10px 16px !important; }
+    .msk-nav > a { gap:10px !important; min-width:0; }
+    .msk-nav > a > div:first-child { width:40px !important; height:40px !important; border-radius:11px !important; flex:0 0 auto; }
+    .msk-nav > a > div:last-child > div:first-child { font-size:17px !important; white-space:nowrap; }
+    .msk-nav > a > div:last-child > div:last-child { font-size:9px !important; letter-spacing:.14em !important; }
+    .msk-nav > div { display:none !important; }
+    .msk-hero, .msk-section { padding-left:16px !important; padding-right:16px !important; }
+    .msk-section { padding-top:48px !important; }
+    .msk-hero > div, .msk-split, .msk-order { grid-template-columns:1fr !important; border-radius:20px !important; }
+    .msk-hero-copy { padding:28px 22px 24px !important; }
+    .msk-hero-copy h1 { font-size:42px !important; line-height:1.02 !important; }
+    .msk-hero-copy p { font-size:16px !important; line-height:1.55 !important; }
+    .msk-hero-actions { flex-direction:column; gap:10px !important; margin-top:24px !important; }
+    .msk-hero-actions a { width:100%; padding:15px 18px !important; text-align:center; }
+    .msk-stats { gap:18px !important; margin-top:28px !important; justify-content:space-between; }
+    .msk-stats > div > div:first-child { font-size:25px !important; }
+    .msk-stats > div > div:last-child { font-size:11px !important; }
+    .msk-hero-image { min-height:0 !important; height:260px !important; order:-1; }
+    .msk-trust { padding:20px 16px 0 !important; }
+    .msk-trust > div { justify-content:flex-start !important; gap:10px 14px !important; font-size:12px !important; }
+    .msk-trust .msk-dot { display:none; }
+    .msk-heading { align-items:flex-start !important; margin-bottom:22px !important; }
+    .msk-heading h2, .msk-section h2 { font-size:33px !important; line-height:1.08 !important; }
+    .msk-audience-title { font-size:30px !important; white-space:nowrap; letter-spacing:-.02em; }
+    .msk-heading > span { display:none; }
+    .msk-products { display:flex !important; overflow-x:auto; scroll-snap-type:x mandatory; gap:12px !important; margin-right:-16px; padding-right:16px; scrollbar-width:none; }
+    .msk-products::-webkit-scrollbar { display:none; }
+    .msk-products .msk-prod { min-width:78vw; scroll-snap-align:start; }
+    .msk-products .msk-prod img { height:190px !important; }
+    .msk-split > div, .msk-order > div { padding:30px 22px !important; }
+    .msk-split > img { min-height:0 !important; height:280px !important; }
+    .msk-steps, .msk-audiences { grid-template-columns:1fr !important; gap:12px !important; }
+    .msk-steps > div, .msk-audiences > div { padding:22px !important; }
+    .msk-form-grid, .msk-type-grid { grid-template-columns:1fr !important; }
+    input, textarea, button { font-size:16px !important; }
+    .msk-footer { margin-top:44px !important; padding:28px 16px 20px !important; justify-content:center !important; text-align:center; }
+    .msk-mobile-bar { position:fixed; display:grid; grid-template-columns:1fr 1.35fr; gap:10px; left:0; right:0; bottom:0; z-index:9998; padding:10px 16px calc(10px + env(safe-area-inset-bottom)); background:rgba(247,244,234,.96); border-top:1px solid rgba(31,61,43,.14); backdrop-filter:blur(14px); }
+    .msk-mobile-bar a { min-height:48px; display:flex; align-items:center; justify-content:center; border-radius:14px; font-size:14px; font-weight:700; }
+    .msk-whatsapp-float { display:none !important; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } * { transition:none !important; } }
 </style>
 </helmet>
 
@@ -56,73 +109,73 @@
   </div>
 
   <!-- hero -->
-  <div style="max-width:1200px; margin:0 auto; padding:20px 40px 0;">
+  <div class="msk-hero" style="max-width:1200px; margin:0 auto; padding:20px 40px 0;">
     <div style="display:grid; grid-template-columns:1.05fr .95fr; gap:0; background:#fff; border-radius:28px; overflow:hidden; border:1px solid rgba(31,61,43,.08);">
-      <div style="padding:64px 52px 60px;">
+      <div class="msk-hero-copy" style="padding:64px 52px 60px;">
         <div style="display:inline-flex; align-items:center; gap:8px; background:#eaf0e2; color:#37623f; font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; padding:8px 14px; border-radius:999px;">
           <span style="width:7px; height:7px; border-radius:50%; background:#5ba85f; display:inline-block;"></span> 100 % bio &amp; local
         </div>
         <h1 style="font-family:'DM Serif Display',serif; font-weight:400; font-size:64px; line-height:1.02; margin:24px 0 0; letter-spacing:-.01em;">Du sol de Matadi-Mayo à votre table</h1>
         <p style="font-size:18.5px; line-height:1.6; color:#4a5341; max-width:470px; margin:22px 0 0;">Nous cultivons des légumes frais, élevons poulets et porcs, et récoltons les vivres du terroir — livrés le jour même à Kinshasa.</p>
-        <div style="display:flex; gap:14px; margin-top:34px;">
+        <div class="msk-hero-actions" style="display:flex; gap:14px; margin-top:34px;">
           <a href="#commande" class="msk-cta" style="background:#1f3d2b; color:#f7f4ea; padding:16px 30px; border-radius:999px; font-weight:700; font-size:15px;">Commander maintenant</a>
           <a href="#produits" style="border:1.5px solid rgba(31,61,43,.25); padding:16px 28px; border-radius:999px; font-weight:600; font-size:15px; color:#20301f;">Découvrir nos produits</a>
         </div>
-        <div style="display:flex; gap:44px; margin-top:48px;">
+        <div class="msk-stats" style="display:flex; gap:44px; margin-top:48px;">
           <div><div style="font-family:'DM Serif Display',serif; font-size:32px;">Bio</div><div style="font-size:13px; color:#6d7a5e; margin-top:2px;">sans pesticides</div></div>
           <div><div style="font-family:'DM Serif Display',serif; font-size:32px;">J+0</div><div style="font-size:13px; color:#6d7a5e; margin-top:2px;">récolte du jour</div></div>
           <div><div style="font-family:'DM Serif Display',serif; font-size:32px;">Kinshasa</div><div style="font-size:13px; color:#6d7a5e; margin-top:2px;">livraison locale</div></div>
         </div>
       </div>
-      <img src="uploads/hero-champ-poules-v2.webp" alt="Champ de légumes et poules en plein air à MSK Matadi-Mayo" style="width:100%; height:100%; min-height:560px; object-fit:cover; display:block;">
+      <img class="msk-hero-image" src="uploads/hero-champ-poules-v2.webp" alt="Champ de légumes et poules en plein air à MSK Matadi-Mayo" style="width:100%; height:100%; min-height:560px; object-fit:cover; display:block;">
     </div>
   </div>
 
   <!-- trust strip -->
-  <div style="max-width:1200px; margin:0 auto; padding:26px 40px 0;">
+  <div class="msk-trust" style="max-width:1200px; margin:0 auto; padding:26px 40px 0;">
     <div style="display:flex; flex-wrap:wrap; gap:12px 28px; align-items:center; justify-content:center; color:#5a6150; font-size:14px; font-weight:600;">
       <span>🌿 Sans pesticides</span>
-      <span style="opacity:.35;">•</span>
+      <span class="msk-dot" style="opacity:.35;">•</span>
       <span>🐔 Élevage en plein air</span>
-      <span style="opacity:.35;">•</span>
+      <span class="msk-dot" style="opacity:.35;">•</span>
       <span>🥚 Œufs frais en plateaux de 30</span>
-      <span style="opacity:.35;">•</span>
+      <span class="msk-dot" style="opacity:.35;">•</span>
       <span>🚚 Livraison à Kinshasa</span>
     </div>
   </div>
 
   <!-- products -->
-  <div id="produits" style="max-width:1200px; margin:0 auto; padding:72px 40px 0; scroll-margin-top:24px;">
-    <div style="display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:32px;">
+  <div id="produits" class="msk-section" style="max-width:1200px; margin:0 auto; padding:72px 40px 0; scroll-margin-top:24px;">
+    <div class="msk-heading" style="display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:32px;">
       <div>
         <div style="font-size:12px; letter-spacing:.2em; text-transform:uppercase; color:#6d7a5e; margin-bottom:8px;">Nos produits</div>
         <h2 style="font-family:'DM Serif Display',serif; font-size:42px; margin:0;">Ce que nous cultivons &amp; élevons</h2>
       </div>
       <span style="font-size:13px; color:#6d7a5e; letter-spacing:.1em; text-transform:uppercase;">Récolté &amp; élevé sur place</span>
     </div>
-    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:20px;">
+    <div class="msk-products" style="display:grid; grid-template-columns:repeat(4,1fr); gap:20px;">
       <div class="msk-prod" style="background:#fff; border-radius:20px; overflow:hidden; border:1px solid rgba(31,61,43,.08);">
-        <img src="uploads/legumes-frais-v2.webp" alt="Légumes frais récoltés à la ferme" style="width:100%; height:180px; object-fit:cover; display:block;">
+        <img loading="lazy" decoding="async" src="uploads/legumes-frais-v2.webp" alt="Légumes frais récoltés à la ferme" style="width:100%; height:180px; object-fit:cover; display:block;">
         <div style="padding:22px;"><div style="font-family:'DM Serif Display',serif; font-size:23px;">Légumes frais</div><p style="font-size:14px; color:#5a6150; line-height:1.55; margin:8px 0 0;">Récoltés le matin, croquants et pleins de goût.</p></div>
       </div>
       <div class="msk-prod" style="background:#fff; border-radius:20px; overflow:hidden; border:1px solid rgba(31,61,43,.08);">
-        <img src="uploads/poulets-oeufs-v2.webp" alt="Poulets en plein air et œufs frais en plateau de 30" style="width:100%; height:180px; object-fit:cover; display:block;">
+        <img loading="lazy" decoding="async" src="uploads/poulets-oeufs-v2.webp" alt="Poulets en plein air et œufs frais en plateau de 30" style="width:100%; height:180px; object-fit:cover; display:block;">
         <div style="padding:22px;"><div style="font-family:'DM Serif Display',serif; font-size:23px;">Poulets &amp; œufs</div><p style="font-size:14px; color:#5a6150; line-height:1.55; margin:8px 0 0;">Élevés en plein air. Œufs frais en plateaux de 30.</p></div>
       </div>
       <div class="msk-prod" style="background:#fff; border-radius:20px; overflow:hidden; border:1px solid rgba(31,61,43,.08);">
-        <img src="uploads/viande-porc-v3.webp" alt="Viande de porc fraîche" style="width:100%; height:180px; object-fit:cover; display:block;">
+        <img loading="lazy" decoding="async" src="uploads/viande-porc-v3.webp" alt="Viande de porc fraîche" style="width:100%; height:180px; object-fit:cover; display:block;">
         <div style="padding:22px;"><div style="font-family:'DM Serif Display',serif; font-size:23px;">Viande de porc</div><p style="font-size:14px; color:#5a6150; line-height:1.55; margin:8px 0 0;">Porcs élevés sainement, viande fraîche et tendre.</p></div>
       </div>
       <div class="msk-prod" style="background:#fff; border-radius:20px; overflow:hidden; border:1px solid rgba(31,61,43,.08);">
-        <img src="uploads/vivres-locaux-v3.webp" alt="Vivres locaux : manioc, plantain, maïs et arachides" style="width:100%; height:180px; object-fit:cover; display:block;">
+        <img loading="lazy" decoding="async" src="uploads/vivres-locaux-v3.webp" alt="Vivres locaux : manioc, plantain, maïs et arachides" style="width:100%; height:180px; object-fit:cover; display:block;">
         <div style="padding:22px;"><div style="font-family:'DM Serif Display',serif; font-size:23px;">Vivres locaux</div><p style="font-size:14px; color:#5a6150; line-height:1.55; margin:8px 0 0;">Manioc, plantain, maïs et produits du terroir.</p></div>
       </div>
     </div>
   </div>
 
   <!-- about band -->
-  <div id="ferme" style="max-width:1200px; margin:0 auto; padding:72px 40px 0; scroll-margin-top:24px;">
-    <div style="background:#1f3d2b; border-radius:28px; color:#eef0e6; display:grid; grid-template-columns:1fr 1fr; overflow:hidden;">
+  <div id="ferme" class="msk-section" style="max-width:1200px; margin:0 auto; padding:72px 40px 0; scroll-margin-top:24px;">
+    <div class="msk-split" style="background:#1f3d2b; border-radius:28px; color:#eef0e6; display:grid; grid-template-columns:1fr 1fr; overflow:hidden;">
       <div style="padding:60px 50px;">
         <div style="font-size:12px; letter-spacing:.2em; text-transform:uppercase; color:#9fc79a;">Notre ferme</div>
         <h2 style="font-family:'DM Serif Display',serif; font-weight:400; font-size:40px; margin:14px 0 0; line-height:1.08;">Une agriculture familiale, saine et durable</h2>
@@ -133,17 +186,17 @@
           <span style="border:1px solid rgba(255,255,255,.25); padding:9px 16px; border-radius:999px; font-size:13px;">Circuit court</span>
         </div>
       </div>
-      <img src="uploads/notre-ferme-v3.webp" alt="La ferme MSK Matadi-Mayo : porcherie, poules et plateaux d'œufs" style="width:100%; height:100%; min-height:380px; object-fit:cover; display:block;">
+      <img loading="lazy" decoding="async" src="uploads/notre-ferme-v3.webp" alt="La ferme MSK Matadi-Mayo : porcherie, poules et plateaux d'œufs" style="width:100%; height:100%; min-height:380px; object-fit:cover; display:block;">
     </div>
   </div>
 
   <!-- how to order -->
-  <div id="commander" style="max-width:1200px; margin:0 auto; padding:72px 40px 0; scroll-margin-top:24px;">
+  <div id="commander" class="msk-section" style="max-width:1200px; margin:0 auto; padding:72px 40px 0; scroll-margin-top:24px;">
     <div style="text-align:center; margin-bottom:38px;">
       <div style="font-size:12px; letter-spacing:.2em; text-transform:uppercase; color:#6d7a5e; margin-bottom:8px;">Comment commander</div>
       <h2 style="font-family:'DM Serif Display',serif; font-size:42px; margin:0;">Du champ à votre porte, en 3 étapes</h2>
     </div>
-    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px;">
+    <div class="msk-steps" style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px;">
       <div style="background:#fff; border:1px solid rgba(31,61,43,.08); border-radius:20px; padding:32px;">
         <div style="width:44px; height:44px; border-radius:12px; background:#eaf0e2; color:#37623f; display:flex; align-items:center; justify-content:center; font-family:'DM Serif Display',serif; font-size:22px;">1</div>
         <div style="font-family:'DM Serif Display',serif; font-size:22px; margin:18px 0 8px;">Contactez-nous</div>
@@ -163,9 +216,9 @@
   </div>
 
   <!-- audiences -->
-  <div style="max-width:1200px; margin:0 auto; padding:72px 40px 0;">
-    <h2 style="font-family:'DM Serif Display',serif; font-size:36px; margin:0 0 28px;">Pour qui livrons-nous ?</h2>
-    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:18px; font-size:14px;">
+  <div class="msk-section" style="max-width:1200px; margin:0 auto; padding:72px 40px 0;">
+    <h2 class="msk-audience-title" style="font-family:'DM Serif Display',serif; font-size:36px; margin:0 0 28px;">Pour qui livrons-nous ?</h2>
+    <div class="msk-audiences" style="display:grid; grid-template-columns:repeat(4,1fr); gap:18px; font-size:14px;">
       <div style="padding:24px; border-radius:18px; background:#eef1e7;"><div style="font-weight:700; font-size:16.5px; margin-bottom:6px;">Familles</div><span style="color:#5a6150;">Des produits frais et sains pour la maison.</span></div>
       <div style="padding:24px; border-radius:18px; background:#eef1e7;"><div style="font-weight:700; font-size:16.5px; margin-bottom:6px;">Restaurants &amp; hôtels</div><span style="color:#5a6150;">Approvisionnement régulier en gros.</span></div>
       <div style="padding:24px; border-radius:18px; background:#eef1e7;"><div style="font-weight:700; font-size:16.5px; margin-bottom:6px;">Marchés &amp; revendeurs</div><span style="color:#5a6150;">Volumes fiables au meilleur prix.</span></div>
@@ -174,8 +227,8 @@
   </div>
 
   <!-- visite ferme -->
-  <div id="visite" style="max-width:1200px; margin:0 auto; padding:72px 40px 0; scroll-margin-top:88px;">
-    <div style="background:#fff; border:1px solid rgba(31,61,43,.08); border-radius:28px; overflow:hidden; display:grid; grid-template-columns:1.05fr .95fr;">
+  <div id="visite" class="msk-section" style="max-width:1200px; margin:0 auto; padding:72px 40px 0; scroll-margin-top:88px;">
+    <div class="msk-split" style="background:#fff; border:1px solid rgba(31,61,43,.08); border-radius:28px; overflow:hidden; display:grid; grid-template-columns:1.05fr .95fr;">
       <div style="padding:56px 50px;">
         <div style="font-size:12px; letter-spacing:.2em; text-transform:uppercase; color:#6d7a5e;">Visite à la ferme</div>
         <h2 style="font-family:'DM Serif Display',serif; font-size:40px; margin:14px 0 0; line-height:1.08;">Venez nous rendre visite</h2>
@@ -195,13 +248,13 @@
           <a href="mailto:ferme@mskconnect.cd" style="border:1.5px solid rgba(31,61,43,.22); color:#20301f; padding:15px 24px; border-radius:14px; font-weight:600; font-size:15px;">Écrire à la ferme</a>
         </div>
       </div>
-      <img src="uploads/visite-paillote-v4.webp" alt="Bâtiment d'accueil et mini-boutique de la ferme MSK Matadi-Mayo" style="width:100%; height:100%; min-height:420px; object-fit:cover; display:block;">
+      <img loading="lazy" decoding="async" src="uploads/visite-paillote-v4.webp" alt="Bâtiment d'accueil et mini-boutique de la ferme MSK Matadi-Mayo" style="width:100%; height:100%; min-height:420px; object-fit:cover; display:block;">
     </div>
   </div>
 
   <!-- lead form -->
-  <div id="commande" style="max-width:1200px; margin:0 auto; padding:72px 40px 0; scroll-margin-top:24px;">
-    <div style="background:#fff; border:1px solid rgba(31,61,43,.08); border-radius:28px; overflow:hidden; display:grid; grid-template-columns:.9fr 1.1fr;">
+  <div id="commande" class="msk-section" style="max-width:1200px; margin:0 auto; padding:72px 40px 0; scroll-margin-top:24px;">
+    <div class="msk-order" style="background:#fff; border:1px solid rgba(31,61,43,.08); border-radius:28px; overflow:hidden; display:grid; grid-template-columns:.9fr 1.1fr;">
 
       <!-- left info panel -->
       <div style="background:#1f3d2b; color:#eef0e6; padding:52px 46px;">
@@ -237,7 +290,7 @@
 
         <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
           <div>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+            <div class="msk-form-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
               <label style="font-size:13px; font-weight:600; color:#4a5341;">Nom / établissement
                 <input value="{{ form.name }}" onInput="{{ setName }}" placeholder="Votre nom ou société" style="width:100%; margin-top:7px; padding:13px 14px; border:1.5px solid rgba(31,61,43,.16); border-radius:12px; font-size:14.5px; font-family:'Public Sans',sans-serif; background:#faf9f2; color:#20301f;">
               </label>
@@ -251,7 +304,7 @@
             </label>
 
             <div style="margin-top:20px; font-size:13px; font-weight:600; color:#4a5341;">Vous êtes</div>
-            <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin-top:10px;">
+            <div class="msk-type-grid" style="display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin-top:10px;">
               <sc-for list="{{ types }}" as="t" hint-placeholder-count="4">
                 <button onClick="{{ t.select }}" style="{{ t.style }}">{{ t.label }}</button>
               </sc-for>
@@ -288,7 +341,7 @@
   </div>
 
   <!-- footer -->
-  <div style="max-width:1200px; margin:56px auto 0; padding:36px 40px 48px; border-top:1px solid rgba(31,61,43,.12); display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap; font-size:13.5px; color:#6d7a5e;">
+  <div class="msk-footer" style="max-width:1200px; margin:56px auto 0; padding:36px 40px 48px; border-top:1px solid rgba(31,61,43,.12); display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap; font-size:13.5px; color:#6d7a5e;">
     <div style="display:flex; align-items:center; gap:12px;">
       <div style="width:36px; height:36px; border-radius:10px; background:#1f3d2b; color:#e8c66a; display:flex; align-items:center; justify-content:center; font-family:'DM Serif Display',serif; font-size:12px; letter-spacing:.02em;">MSK</div>
       <span>© 2026 MSK Matadi-Mayo — Kinshasa, RDC</span>
@@ -296,9 +349,14 @@
     <span>Légumes · Poulets &amp; œufs · Porc · Vivres locaux</span>
   </div>
 
+  <nav class="msk-mobile-bar" aria-label="Actions rapides">
+    <a href="tel:+243996901895" style="border:1.5px solid rgba(31,61,43,.22); color:#20301f;">Appeler</a>
+    <a href="https://wa.me/243996901895?text=Bonjour%20MSK%20Matadi-Mayo%2C%20je%20souhaite%20commander." target="_blank" rel="noopener" style="background:#25d366; color:#fff;">Commander sur WhatsApp</a>
+  </nav>
+
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900},&quot;showBanner&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Bannière&quot;},&quot;bannerText&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Livraison fraîche à Kinshasa · Commandez au +243 996 901 895&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Bannière&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900},&quot;showBanner&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Bannière&quot;},&quot;bannerText&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Livraison fraîche à Kin · Commandez au +243 996 901 895&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Bannière&quot;}}">
 class Component extends DCLogic {
   state = {
     submitted: false,
@@ -369,7 +427,7 @@ class Component extends DCLogic {
 
     return {
       showBanner: this.props.showBanner ?? true,
-      bannerText: this.props.bannerText ?? "Livraison fraîche à Kinshasa · Commandez au +243 996 901 895",
+      bannerText: this.props.bannerText ?? "Livraison fraîche à Kin · Commandez au +243 996 901 895",
       form, types, isDelivery, showAddress, addressLabel,
       submitted, notSubmitted: !submitted,
       showError: error,
@@ -386,8 +444,13 @@ class Component extends DCLogic {
   }
 }
 </script>
-<a href="https://wa.me/243996901895?text=Bonjour%20MSK%20Matadi-Mayo%2C%20je%20souhaite%20commander." target="_blank" rel="noopener" aria-label="WhatsApp"
+<a class="msk-whatsapp-float" href="https://wa.me/243996901895?text=Bonjour%20MSK%20Matadi-Mayo%2C%20je%20souhaite%20commander." target="_blank" rel="noopener" aria-label="WhatsApp"
  style="position:fixed;bottom:22px;right:22px;z-index:9999;width:58px;height:58px;border-radius:50%;background:#25d366;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.3);font-size:30px;text-decoration:none;">
 <svg viewBox="0 0 32 32" width="30" height="30" fill="#fff"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.6.8 5 2.3 7L4 29l7.2-2.2c1.9 1 4 1.6 6.3 1.6h.5c6.6 0 12-5.4 12-12S22.6 3 16 3zm5.9 17c-.3.8-1.6 1.5-2.3 1.6-.6.1-1.3.2-3.7-.8-3.1-1.3-5.1-4.4-5.3-4.6-.2-.2-1.3-1.7-1.3-3.2s.8-2.3 1.1-2.6c.3-.3.6-.4.8-.4h.6c.2 0 .5-.1.7.5l1 2.5c.1.2.1.4 0 .6l-.4.6-.5.6c-.2.2-.4.4-.2.7.2.4 1 1.6 2.1 2.6 1.4 1.3 2.6 1.7 3 1.8.4.2.6.1.8-.1l1.2-1.4c.3-.3.5-.3.8-.2l2.5 1.2c.4.2.6.3.7.5.1.1.1.7-.2 1.5z"/></svg></a>
+<script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js"));
+  }
+</script>
 </body>
 </html>
