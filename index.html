@@ -32,21 +32,23 @@
   .msk-prod { transition: transform .25s ease, box-shadow .25s ease; }
   .msk-cta { transition: transform .18s ease, filter .18s ease; }
   .msk-cta:hover { transform: translateY(-2px); filter: brightness(1.06); color: #f7f4ea; }
+  .msk-menu-toggle { display:none; }
   .msk-mobile-bar { display:none; }
   :focus-visible { outline:3px solid #e8c66a; outline-offset:3px; }
   html { scroll-behavior:smooth; }
   @media (max-width: 760px) {
     body { padding-bottom:calc(76px + env(safe-area-inset-bottom)); }
     #top > div:first-child { padding:8px 16px !important; font-size:11.5px !important; }
-    .msk-nav { padding:10px 16px 0 !important; flex-wrap:wrap; }
+    .msk-nav { padding:10px 16px !important; flex-wrap:wrap; }
     .msk-nav > a { gap:10px !important; min-width:0; }
     .msk-nav > a > div:first-child { width:40px !important; height:40px !important; border-radius:11px !important; flex:0 0 auto; }
     .msk-nav > a > div:last-child > div:first-child { font-size:17px !important; white-space:nowrap; }
     .msk-nav > a > div:last-child > div:last-child { font-size:9px !important; letter-spacing:.14em !important; }
-    .msk-nav > div { display:flex !important; order:2; width:calc(100% + 32px); margin:10px -16px 0; padding:10px 16px 12px; gap:24px !important; overflow-x:auto; overscroll-behavior-x:contain; scroll-snap-type:x proximity; scrollbar-width:none; border-top:1px solid rgba(31,61,43,.08); }
-    .msk-nav > div::-webkit-scrollbar { display:none; }
-    .msk-nav > div a { flex:0 0 auto; min-height:42px; display:flex; align-items:center; white-space:nowrap; scroll-snap-align:start; font-size:14px; }
-    .msk-nav > div .msk-cta { padding:10px 20px !important; }
+    .msk-menu-toggle { display:flex; align-items:center; justify-content:center; min-height:42px; padding:9px 15px; border:1.5px solid rgba(31,61,43,.2); border-radius:12px; background:#fff; color:#20301f; font-family:'Public Sans',sans-serif; font-size:14px !important; font-weight:700; cursor:pointer; }
+    .msk-menu-links { display:none !important; order:2; width:calc(100% + 32px); margin:10px -16px -10px; padding:8px 16px 16px; gap:4px !important; flex-direction:column; border-top:1px solid rgba(31,61,43,.08); background:#f7f4ea; }
+    .msk-menu-links.is-open { display:flex !important; }
+    .msk-menu-links a { width:100%; min-height:48px; display:flex; align-items:center; padding:0 12px; border-bottom:1px solid rgba(31,61,43,.08); font-size:15px; }
+    .msk-menu-links .msk-cta { justify-content:center; margin-top:8px; padding:12px 20px !important; border-bottom:0; }
     .msk-hero, .msk-section { padding-left:16px !important; padding-right:16px !important; }
     .msk-section { padding-top:48px !important; }
     .msk-hero > div, .msk-split, .msk-order { grid-template-columns:1fr !important; border-radius:20px !important; }
@@ -101,12 +103,13 @@
         <div style="font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:#6d7a5e; margin-top:4px;">Ferme bio · Kinshasa</div>
       </div>
     </a>
-    <div style="display:flex; align-items:center; gap:34px; font-size:14.5px;">
-      <a href="#produits">Produits</a>
-      <a href="#ferme">Notre ferme</a>
-      <a href="#commander">Comment commander</a>
-      <a href="#visite">Visite ferme</a>
-      <a href="#commande" class="msk-cta" style="background:#1f3d2b; color:#f7f4ea; padding:12px 22px; border-radius:999px; font-weight:700;">Commander</a>
+    <button class="msk-menu-toggle" onClick="{{ toggleMenu }}" aria-expanded="{{ menuOpen }}" aria-controls="mobile-navigation">{{ menuLabel }}</button>
+    <div id="mobile-navigation" class="msk-menu-links {{ menuClass }}" style="display:flex; align-items:center; gap:34px; font-size:14.5px;">
+      <a href="#produits" onClick="{{ closeMenu }}">Produits</a>
+      <a href="#ferme" onClick="{{ closeMenu }}">Notre ferme</a>
+      <a href="#commander" onClick="{{ closeMenu }}">Comment commander</a>
+      <a href="#visite" onClick="{{ closeMenu }}">Visite ferme</a>
+      <a href="#commande" onClick="{{ closeMenu }}" class="msk-cta" style="background:#1f3d2b; color:#f7f4ea; padding:12px 22px; border-radius:999px; font-weight:700;">Commander</a>
     </div>
   </div>
   </div>
@@ -364,6 +367,7 @@ class Component extends DCLogic {
   state = {
     submitted: false,
     error: false,
+    menuOpen: false,
     type: "",
     form: { name: "", phone: "", email: "", address: "", message: "" },
   };
@@ -398,8 +402,11 @@ class Component extends DCLogic {
     form: { name: "", phone: "", email: "", address: "", message: "" },
   });
 
+  toggleMenu = () => this.setState(s => ({ menuOpen: !s.menuOpen }));
+  closeMenu = () => this.setState({ menuOpen: false });
+
   renderVals() {
-    const { form, type, submitted, error } = this.state;
+    const { form, type, submitted, error, menuOpen } = this.state;
     const isDelivery = type === "Livraison à domicile";
     const showAddress = this.needsAddress(type);
     const addressLabel = isDelivery ? "Adresse de livraison (Kinshasa)" : "Adresse de l'établissement (Kinshasa)";
@@ -432,6 +439,8 @@ class Component extends DCLogic {
       showBanner: this.props.showBanner ?? true,
       bannerText: this.props.bannerText ?? "Livraison fraîche à Kin · Commandez au +243 996 901 895",
       form, types, isDelivery, showAddress, addressLabel,
+      menuOpen, menuClass: menuOpen ? "is-open" : "", menuLabel: menuOpen ? "Fermer" : "Menu",
+      toggleMenu: this.toggleMenu, closeMenu: this.closeMenu,
       submitted, notSubmitted: !submitted,
       showError: error,
       submit: this.submit, reset: this.reset,
